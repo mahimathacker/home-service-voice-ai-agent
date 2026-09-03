@@ -12,13 +12,15 @@
   "dependencies": {
     "next": "16.3.4",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-dom": "19.2.8",
+    "sarvam-conv-ai-sdk": "^0.0.42",
+    "sarvam-convai-embed": "^1.0.19"
   },
   "devDependencies": {
     "@types/node": "22.7.4",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "typescript": "5.6.2",
-    "vitest": "4.0.5"
+    "vitest": "4.1.11"
   }
 }

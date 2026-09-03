@@ -16,7 +16,7 @@ export default function Home() {
           <div className="language-row"><span>English</span><span>हिन्दी</span><span>Hinglish</span></div>
         </header>
         <div className="workspace">
-          <VoiceAgent agentUrl={process.env.NEXT_PUBLIC_SARVAM_AGENT_URL} />
+          <VoiceAgent config={{ apiKey: process.env.NEXT_PUBLIC_SARVAM_EMBED_KEY, appId: process.env.NEXT_PUBLIC_SARVAM_AGENT_ID, orgId: process.env.NEXT_PUBLIC_SARVAM_ORG_ID, workspaceId: process.env.NEXT_PUBLIC_SARVAM_WORKSPACE_ID }} />
           <BookingStatus />
         </div>
         <section className="how-it-works">

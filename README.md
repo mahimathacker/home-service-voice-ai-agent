@@ -6,7 +6,7 @@ A small Next.js developer surface around the existing **HomeServe Booking Agent*
 
 ```text
 Next.js web app
-  └─ Sarvam Web deployment → existing HomeServe agent
+  └─ Sarvam browser SDK → existing HomeServe agent
                                ├─ check_service_area → POST /api/service-area
                                ├─ get_available_slots → POST /api/slots
                                └─ book_appointment   → POST /api/book
@@ -20,7 +20,11 @@ cp .env.example .env.local
 npm run dev
 ```
 
-Set `NEXT_PUBLIC_SARVAM_AGENT_URL` to the Web deployment/embed URL for the committed HomeServe agent. No Sarvam secret belongs in a `NEXT_PUBLIC_` variable. The browser iframe receives microphone permission and is mounted only while a session is active.
+Copy the agent ID, org ID, workspace ID, and an **embed-scoped** key from Sarvam's **Deploy with code → Embed an agent** guide into `.env.local`. These four values use the `NEXT_PUBLIC_` prefix because Sarvam designed the embed key for browser publication. Keep `SARVAM_API_KEY` server-only; it is not used by the browser session.
+
+The custom interface uses Sarvam's browser conversation SDK for microphone capture, playback, state changes, transcripts, mute/unmute, and session teardown. A stable anonymous user ID is generated per browser so calls can be found in Sarvam analytics.
+
+The web session overrides the first message with a neutral English greeting. Language selection remains automatic after the caller begins speaking, allowing the agent to follow English, Hindi, or Hinglish naturally.
 
 Sarvam must reach public HTTPS endpoints. For local testing, expose the Next.js server through a tunnel, then use that public base URL in each API Tool. For production, deploy the app and replace the URLs with the production origin.
 
